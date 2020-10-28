@@ -16,7 +16,6 @@ class App extends Component {
   clickNumberHandler = (event) => {
     let selectedNum = event.target.firstChild.textContent;
     let operatorLngth = this.state.operator.length;
-    let firstArgLngth = this.state.firstArgument.length;
 
     if (operatorLngth > 0) {
       let input = this.state.secondArgument;
@@ -47,12 +46,15 @@ class App extends Component {
   clickOperatorHandler = (event) => {
     let selectedOp = event.target.firstChild.textContent;
     let equationArr = [`${this.state.firstArgument}`, `${this.state.operator}`, `${this.state.secondArgument}`];
+    const evalArr = eval(equationArr.join(""));
 
-    const evalArr = eval(equationArr.join(""))
     if (selectedOp === '=') {
       this.setState((prevState) => {
         return {
           ...prevState,
+          firstArgument: evalArr,
+          secondArgument: '',
+          operator: '',
           result: evalArr
         }
       })
