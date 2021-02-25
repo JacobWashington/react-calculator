@@ -16,11 +16,13 @@ class App extends Component {
   clickNumberHandler = (event) => {
     let selectedNum = event.target.firstChild.textContent;
     let operatorLngth = this.state.operator.length;
+    let updatedInput;
+    let input;
 
     if (operatorLngth > 0) {
-      let input = this.state.secondArgument;
+      input = this.state.secondArgument;
 
-      let updatedInput = input.concat(selectedNum);
+      updatedInput = input.concat(selectedNum);
 
       this.setState((prevState) => {
         return {
@@ -29,8 +31,8 @@ class App extends Component {
         };
       });
     } else {
-      let input = this.state.firstArgument;
-      let updatedInput = input.concat(selectedNum);
+      input = this.state.firstArgument;
+      updatedInput = input.concat(selectedNum);
 
       this.setState((prevState) => {
         return {
